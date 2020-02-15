@@ -4,94 +4,42 @@ import java.util.Scanner;
 
 public class Ejercicio1 extends Thread {
 
-	public static int matriz1[][];
-	public static int matriz2[][];
-	private int tamaño1;
-	private int tamaño2;
-	/**
-	 * se crean las variable para obtener la matriz y el tamaño <b> pre </b>
-	 * calcular el tamaño de la matriz <b> post </b> se obtiene la matriz con el
-	 * tamaño que el usuario digite
-	 */
+	public static int matriz3[][];
+	public static int suma = 0;
+	private int matriz1[][], matriz2[][];
+	private static int i, j, k = 0;
+	private int filas_matriz1;
+	private int columnas_matriz1;
+	private int columnas_matriz2;
 
-	/**
-	 * se crea el scanner para pedir los datos por consola
-	 */
+	public Ejercicio1(int matriz1[][], int matriz2[][]) {
 
-	Scanner sc = new Scanner(System.in);
-
-	public Ejercicio1() {
-		/**
-		 * se toma el dato por consola del primer tamaño de la matriz nxn
-		 */
-		System.out.print("INGRESE EL TAMAÑO DE LA MATRIZ: ");
-		tamaño1 = sc.nextInt();
-		matriz1 = new int[tamaño1][tamaño1];
-		generarMatriz1();
-		/**
-		 * se toma el dato por consola de el tamaño de columnas de la matriz nxf
-		 */
-		System.out.println("INGRESE EL NUMERO DE COLUMNAS:");
-		tamaño2 = sc.nextInt();
-		matriz2 = new int[tamaño1][tamaño2];
-		generarmatriz2();
-
-		System.out.println("LA MATRIZ RESULTANTE DE LA MULTIPLICACION ES:");
-		multiplicacionMatriz(matriz1, matriz2);
-	}
-
-	/**
-	 * se crea el metodo que genera la matriz y los va llenando con numeros
-	 * aleatorios <b>pre</b> generar numeros aleatorios dentro de la matriz <b> post
-	 * </b> se obtiene la matriz nxn
-	 */
-
-	public void generarMatriz1() {
-
-		for (int i = 0; i < matriz1.length; i++) {
-			for (int j = 0; j < matriz1.length; j++) {
-				int numeros = matriz1[i][j] = (int) (Math.random() * 100);
-				numeros = matriz1[i][j];
-				System.out.print(matriz1[i][j] + "   ");
-
-			}
-			System.out.println("\n");
-
-		}
-	}
-
-	public void generarmatriz2() {
-		for (int i = 0; i < matriz1.length; i++) {
-			for (int j = 0; j < matriz2[i].length; j++) {
-				matriz2[i][j] = (int) (Math.random() * 100);
-				System.out.print(matriz1[i][j] + "  ");
-
-			}
-			System.out.println("\n");
-
-		}
-
-	}
-
-	public void multiplicacionMatriz() {
-		if (matriz1[0].length == matriz) {
-			
-		}
+		this.matriz1 = matriz1;
+		this.matriz2 = matriz2;
 		
-		
-		for (int i = 0; i < matriz1.length; i++) {
-			for (int j = 0; j < matriz2[i].length; j++) {
+		filas_matriz1 = matriz1.length;
+		columnas_matriz1 = matriz1[0].length;
+		columnas_matriz2 = matriz2[0].length;
+
+		matriz3 = new int[filas_matriz1][columnas_matriz2];
+
+	}
+
+	@Override
+	public void run() {
+		for (; i < filas_matriz1;) {
+			for (j = 0 ; j < columnas_matriz2; j++) {
+				for (k = 0; k < columnas_matriz1; k++) {
+					suma += matriz1[i][k] * matriz2[k][j];
+				}
+				matriz3[i][j] = suma;
+				suma = 0;
 				
-				int multiplicacion = matriz1[i][j] * matriz2[i][j];
-
 			}
-
+			
+			i++;
+			break;
 		}
-
 	}
-	
-	
-	
-	
 
 }

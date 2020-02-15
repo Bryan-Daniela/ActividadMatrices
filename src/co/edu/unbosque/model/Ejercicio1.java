@@ -73,9 +73,15 @@ public class Ejercicio1 extends Thread {
 
 	}
 
-	public void multiplicacionMatriz(int matriz1[][], int matriz2[][]) {
+	public void multiplicacionMatriz() {
+		if (matriz1[0].length == matriz) {
+			
+		}
+		
+		
 		for (int i = 0; i < matriz1.length; i++) {
 			for (int j = 0; j < matriz2[i].length; j++) {
+				
 				int multiplicacion = matriz1[i][j] * matriz2[i][j];
 
 			}
@@ -83,5 +89,9 @@ public class Ejercicio1 extends Thread {
 		}
 
 	}
+	
+	
+	
+	
 
 }
